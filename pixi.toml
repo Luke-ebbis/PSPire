@@ -7,6 +7,13 @@ channels = ["conda-forge", "salilab"]
 platforms = ["linux-64"]
 
 [tasks]
+make_exec_pspire = "chmod o+x ./PSPire.py"
+make_exec_psaia = "chmod o+x ./software/PSAIA/psa"
+make_exec_mobidb = "chmod o+x ./software/MobiDB-lite-3.8.4/mobidb_lite.py"
+prepare_psaia_docker = "cd data/; singularity -d build psaia.simg docker://msoares/qt4-dev"
+setup = {cmd = "echo 'doing setup'", depends_on = ["make_exec_psaia", "make_exec_mobidb", "make_exec_pspire",
+        "prepare_psaia_docker"]}
+
 
 [dependencies]
 dssp = ">=3.0.0,<3.1"
