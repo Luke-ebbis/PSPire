@@ -6,77 +6,12 @@ PSPire is a machine learning model based on integrated residue-level and structu
 
 # Installation
 
-## Installation using Conda
+```bash
+curl -fsSL https://pixi.sh/install.sh | bash
+pixi run setup
+pixi shell
+```
 
-1. Create conda environment:
-
-   ```
-   conda create -n PSPire python=3.8
-   conda activate PSPire
-   ```
-
-2. Install [DSSP](https://github.com/PDB-REDO/dssp). Conda installation is recommended:
-
-   ```shell
-   conda install -c salilab -y dssp=2.2.1
-   ```
-
-3. Install [Pymol](https://pymol.org) for sticker calculation:
-
-   ```shell
-   conda install -c conda-forge -y pymol-open-source
-   ```
-
-4. Install the following python package:
-
-   ```shell
-   conda install -y xgboost=1.6.2 
-   conda install -y scikit-learn=1.1.2 
-   conda install -y biopython numpy pandas requests
-   ```
-
-5. (Optional) The published models of PSPire used PSAIA software to calculate relative solvent accessible surface area (RSA). It is recommended to prepare the running environment for PSAIA. User can first install Singularity and then use Singularity to build a container. If Singularity or the container image is not found, PSPire would use DSSP to calculate RSA.
-
-   + Install [Singularity](https://apptainer.org/admin-docs/master/installation.html#). As Singularity is written primarily in Go, you should install [Go](https://go.dev/doc/install) first. After installation, you can type the command below to check Singularity has been installed successfully.
-
-     ```shell
-     singularity -h
-     ```
-
-     > Note: you need to use the following command to source the Singularity bash completion file to make sure the usage of bash completion in new shells.
-     >
-     > ```shell
-     > echo ". Singularity_Installation_Path/etc/bash_completion.d/singularity" >> ~/.bashrc  # you should replce Singularity_Installation_Path with your installation path
-     > ```
-
-   + Build Qt 4.8.6 libraray container image needed for PSAIA software running:
-
-   ```shell
-   cd /path/to/PSPire/data
-   singularity -d build psaia.simg docker://msoares/qt4-dev
-   ```
-
-6. Add PSPire to `$PATH`. To enable global access to PSPire from any location on your system, it's recommended to add the PSPire's directory to your system's `$PATH` environment variable. 
-
-   ```bash
-   chmod o+x /path/to/PSPire/PSPire.py
-   echo 'export PATH=/path/to/PSPire:$PATH' >> ~/.bashrc
-   source ~/.bashrc
-   ```
-
-## Installation using docker
-
-1. Pull the PSPire docker image:
-
-   ```shell
-   docker pull houshuang2020/pspire:latest
-   ```
-
-2. Replace the `lib/psaia_run.py` and `PSPire.py` files with the files under the docker_script folder.
-3. Make sure the PSAIA script is executable:
-   ```
-   chmod o+x /path/to/PSPire/software/PSAIA/psa
-   ```
 
 # Parameters
 
