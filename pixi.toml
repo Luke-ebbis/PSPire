@@ -1,0 +1,25 @@
+[project]
+name = "PSPire"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Sibbe Bakker <sibbe.l.bakker@gmail.com>"]
+channels = ["conda-forge", "salilab"]
+platforms = ["linux-64"]
+
+[tasks]
+
+[dependencies]
+dssp = ">=3.0.0,<3.1"
+pymol-open-source = ">=3.0.0,<3.1"
+xgboost = "1.6.2.*"
+scikit-learn = "1.1.2.*"
+biopython = ">=1.83,<2"
+numpy = ">=1.26.4,<1.27"
+pandas = ">=2.2.2,<2.3"
+requests = ">=2.31.0,<2.32"
+go = ">=1.22.2,<1.23"
+singularity = ">=3.8.6,<3.9"
+
+[system-requirements]
+linux="4.18"
+
